@@ -1,22 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addGun, removeGun, addGunAsync } from './index.redux';
 
 
+// App = connect(mapStatetoProps, actionCreators)(App);
+@connect(
+	state =>({num: state}),
+    { addGun, removeGun, addGunAsync }
+    )
 class App extends React.Component{
 	render(){
-		const store = this.props.store;
-		const num = store.getState();
-		const addGun = this.props.addGun;
-		const removeGun = this.props.removeGun;
-		const addGunAsync = this.props.addGunAsync;
+		const num = this.props.num;
+
 		return (
 			<div>
 				<h1>now we have {num} gun(s)</h1>
-				<button onClick={()=>store.dispatch(addGun())}>apply for arm</button>
-				<button onClick={()=>store.dispatch(removeGun())}>remove arm</button>
-				<button onClick={()=>store.dispatch(addGunAsync())}>delay arm</button>
+				<button onClick={this.props.addGun}>apply for arm</button>
+				<button onClick={this.props.removeGun}>remove arm</button>
+				<button onClick={this.props.addGunAsync}>delay arm</button>
 			</div>
-		) 
+		)
 	}
 }
+
 
 export default App
