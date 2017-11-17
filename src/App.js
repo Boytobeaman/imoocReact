@@ -5,7 +5,7 @@ import { addGun, removeGun, addGunAsync } from './index.redux';
 
 // App = connect(mapStatetoProps, actionCreators)(App);
 @connect(
-	state =>({num: state}),
+	state =>({num: state.counter}),
     { addGun, removeGun, addGunAsync }
     )
 class App extends React.Component{
