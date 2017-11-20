@@ -1,14 +1,15 @@
-const express = require("express")
+const express = require("express");
+const bodyParser = require('body-parser');
+const cookieParser = require("cookie-parser");
+const Router = express.Router();
+const userRouter = require('./user');
 
 const app = express();
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use('/user', userRouter);
 
 
-app.get('/', function (req, res) {
-	res.send('<h1>kkfak</h1>')
-});
-app.get('/data', function (req, res) {
-	res.json({name: 'imooc', type: 'it react'})
-});
 
 app.listen(9999, function () {
 	console.log("listen on port 9999")
