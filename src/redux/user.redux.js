@@ -41,23 +41,7 @@ function errorMsg(msg) {
 export function loadData(userinfo) {
     return {type: LOAD_DATA, payload: userinfo}
 }
-export function userinfo() {
-    return dispatch=>{
-        axios.get('/user/info')
-            .then(res=>{
-                if(res.status === 200){
-                    if(res.data.code === 0){
-                        //you info
-                        console.log(111)
-                        console.log(this.props.history)
-                    }else{
-                        console.log(this.props.history);
-                        this.props.history.push('./login');
-                    }
-                }
-            })
-    }
-}
+
 export function login({user, pwd}) {
     if (!user|| !pwd){
         return errorMsg("you must input username and pwd")

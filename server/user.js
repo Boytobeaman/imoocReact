@@ -34,13 +34,8 @@ Router.post('/register', function (req, res) {
                 return res.json({code: 1,msg: "back end error"})
             }
             const { user, type, _id} = d;
+            res.cookie('userid', _id);
             return res.json({code: 0,data:{user, type, _id}})
-        })
-        User.create({user, pwd: md5Pwd(pwd), type},function (err, doc) {
-            if(err){
-                return res.json({code:1,msg:'back end error'})
-            }
-            return res.json({code:0})
         })
     })
 })
