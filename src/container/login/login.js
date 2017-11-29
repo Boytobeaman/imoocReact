@@ -40,11 +40,13 @@ class Login extends React.Component{
                 <Logo></Logo>
                 <WingBlank>
                     <List>
+                    {this.props.msg? <p className="error-msg">{this.props.msg}</p>: null}
                         <InputItem
                             onChange={v =>this.handleChange('user',v)}
                         >UserName</InputItem>
                         <InputItem
                             onChange={v =>this.handleChange('pwd',v)}
+                            type='password'
                         >Password</InputItem>
                     </List>
                     <WhiteSpace />
